@@ -21,17 +21,17 @@ This repository contains the complete Python implementations for all code exampl
 ```
 .
 ├── ch01-identity/           # Enterprise identity and authentication
-├── ch02-gateway/            # API keys and secrets management
-├── ch03-registry/           # Rate limiting and cost control
-├── ch04-anomaly/            # Audit logging and compliance
-├── ch05-evaluation/         # Agent deployment strategies
-├── ch06-observability/      # Monitoring and observability
-├── ch07-debugging/          # Error handling and recovery
-├── ch08-cost/               # Testing agent systems
-├── ch09-infrastructure/     # Scaling agent systems
-├── ch10-human-agent/        # State management
-├── ch13-procurement/        # Case study: Enterprise procurement
-├── ch14-support/            # Case study: Customer service platform
+├── ch02-gateway/            # API keys and secrets management  
+├── ch03-registry/           # Agent registry and service discovery
+├── ch04-anomaly/            # Anomaly detection and monitoring
+├── ch05-evaluation/         # Agent evaluation frameworks
+├── ch06-observability/      # Observability and instrumentation
+├── ch07-debugging/          # Debugging tools and techniques
+├── ch08-cost/               # Cost tracking and attribution
+├── ch09-infrastructure/     # Infrastructure and scaling
+├── ch10-human-agent/        # Human-agent collaboration patterns
+├── ch13-customer-service/   # Case study: Customer service platform
+├── ch14-procurement/        # Case study: Enterprise procurement
 ├── common/                  # Shared utilities and type definitions
 └── requirements.txt         # Python dependencies
 ```
@@ -40,18 +40,18 @@ This repository contains the complete Python implementations for all code exampl
 
 | Chapter | Topic | Key Implementations |
 |---------|-------|---------------------|
-| 1 | Enterprise Identity | JWT auth, certificate management, OIDC integration |
-| 2 | API Keys & Secrets | Secrets management, credential rotation, vault integration |
-| 3 | Rate Limiting | Token buckets, cost controls, quota management |
-| 4 | Audit Logging | Compliance logging, tamper-evident trails, retention |
-| 5 | Deployment | Blue-green deployments, canary releases, rollbacks |
-| 6 | Observability | OpenTelemetry tracing, Prometheus metrics, dashboards |
-| 7 | Error Handling | Circuit breakers, retry policies, graceful degradation |
-| 8 | Testing | Unit tests, integration tests, agent evaluation |
-| 9 | Scaling | Auto-scaling, queue-based architecture, load balancing |
-| 10 | State Management | Checkpointing, distributed state, recovery |
-| 13 | Customer Service | Complete enterprise customer support platform |
-| 14 | Procurement | Complete enterprise procurement system |
+| 1 | Enterprise Identity | JWT auth, X.509 certificates, OIDC delegation, credential lifecycle |
+| 2 | API Gateway | Policy enforcement, request validation, secrets management |
+| 3 | Agent Registry | Service discovery, health monitoring, capability matching |
+| 4 | Anomaly Detection | Statistical anomaly detection, behavioral drift, cost anomalies |
+| 5 | Evaluation | Graders, evaluation datasets, quality metrics |
+| 6 | Observability | OpenTelemetry instrumentation, distributed tracing, metrics |
+| 7 | Debugging | Breakpoints, step-through execution, state inspection |
+| 8 | Cost Tracking | Token attribution, budget management, chargeback reporting |
+| 9 | Infrastructure | Queue-based scaling, worker pools, auto-scaling |
+| 10 | Human-Agent | HITL workflows, approval gates, feedback collection |
+| 13 | Customer Service | Multi-agent support platform with escalation workflows |
+| 14 | Procurement | Enterprise procurement with approval chains |
 
 ## Getting Started
 
@@ -102,11 +102,11 @@ python ch01-identity/identity_service.py
 # Run the observability example
 python ch06-observability/observability.py
 
-# Run the complete procurement system
-python ch13-procurement/procurement_agents.py
-
 # Run the customer support platform
-python ch14-support/support_agents.py
+python ch13-customer-service/support_agents.py
+
+# Run the procurement system
+python ch14-procurement/procurement_agents.py
 ```
 
 ## Key Topics
@@ -139,6 +139,18 @@ This codebase follows modern Python best practices:
 - **Python 3.12+ Compatibility**: Uses `datetime.now(timezone.utc)` instead of deprecated `datetime.utcnow()`
 - **Redis 7.0 Compatibility**: Uses `BLMOVE` instead of deprecated `BRPOPLPUSH`
 - **Thread Safety**: Rate limiters and circuit breakers use proper locking for concurrent access
+- **Import Standards**: PEP 8 compliant import ordering throughout
+
+### Validation
+
+All code has been validated through a comprehensive gauntlet process:
+
+```
+✅ Syntax check: All 15 Python files pass
+✅ Security scan: No hardcoded secrets or unsafe patterns
+✅ Deprecation check: No deprecated Python APIs
+✅ Style check: Consistent formatting and imports
+```
 
 ## Related Resources
 
