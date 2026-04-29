@@ -1,5 +1,5 @@
 """
-Chapter 12: Agent Registry Implementation
+Chapter 3: Rate Limiting and Cost Control
 =========================================
 
 Implements a service registry for AI agents providing:

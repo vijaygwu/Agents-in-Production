@@ -1,6 +1,6 @@
 """
-Chapter 17: Cost Attribution and Management
-==========================================
+Chapter 8: Testing Agent Systems
+================================
 
 Implements cost tracking and attribution for AI agent systems:
 - Token-level cost tracking

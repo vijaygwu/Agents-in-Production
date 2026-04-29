@@ -1,6 +1,6 @@
 """
-Chapter 19: Human-Agent Collaboration Patterns
-=============================================
+Chapter 10: State Management
+============================
 
 Implements patterns for effective human-AI collaboration:
 - Human-in-the-loop (HITL) workflows

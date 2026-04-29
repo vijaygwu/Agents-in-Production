@@ -1,6 +1,6 @@
 """
-Chapter 10: Agent Identity Systems
-===================================
+Chapter 1: Enterprise Identity and Authentication
+=================================================
 Implementation of per-agent identity management for enterprise deployments.
 
 This module provides:

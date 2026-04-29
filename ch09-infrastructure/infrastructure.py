@@ -1,6 +1,6 @@
 """
-Chapter 18: Agent Infrastructure and Deployment
-==============================================
+Chapter 9: Scaling Agent Systems
+================================
 
 Implements infrastructure patterns for AI agent deployment:
 - Containerized agent deployment

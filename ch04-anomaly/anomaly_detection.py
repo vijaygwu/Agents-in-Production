@@ -1,6 +1,6 @@
 """
-Chapter 13: Anomaly Detection for AI Agents
-===========================================
+Chapter 4: Audit Logging and Compliance
+=======================================
 
 Implements anomaly detection systems for monitoring AI agent behavior:
 - Statistical anomaly detection

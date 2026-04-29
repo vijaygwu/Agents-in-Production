@@ -1,6 +1,6 @@
 """
-Chapter 16: Agent Debugging Tools
-================================
+Chapter 7: Error Handling and Recovery
+======================================
 
 Implements debugging utilities for AI agents:
 - Step-through execution

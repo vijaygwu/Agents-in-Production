@@ -1,6 +1,6 @@
 """
-Complete Example: Multi-Agent Customer Support System
-====================================================
+Chapter 13: Case Study - Enterprise Customer Service Platform
+=============================================================
 
 A production-ready customer support system demonstrating:
 - Intent classification and routing

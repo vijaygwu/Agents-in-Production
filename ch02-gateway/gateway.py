@@ -1,6 +1,6 @@
 """
-Chapter 11: Policy Gateway Implementation
-=========================================
+Chapter 2: API Keys and Secrets Management
+==========================================
 
 Implements a policy enforcement gateway for AI agents that provides:
 - Request/response filtering

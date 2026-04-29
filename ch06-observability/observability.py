@@ -1,6 +1,6 @@
 """
-Chapter 15: Agent Observability with OpenTelemetry
-=================================================
+Chapter 6: Monitoring and Observability
+=======================================
 
 Implements comprehensive observability for AI agents:
 - Distributed tracing with spans

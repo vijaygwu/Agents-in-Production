@@ -1,6 +1,6 @@
 """
-Complete Example: Multi-Agent Procurement System
-================================================
+Chapter 14: Case Study - Enterprise Procurement System
+======================================================
 
 A production-ready procurement system demonstrating:
 - Multi-agent orchestration
