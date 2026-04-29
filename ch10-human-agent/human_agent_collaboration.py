@@ -14,6 +14,7 @@ Essential patterns for responsible AI agent deployment.
 """
 
 import asyncio
+import logging
 import time
 import uuid
 from abc import ABC, abstractmethod
@@ -327,7 +328,7 @@ class ApprovalWorkflow:
                 else:
                     callback(request)
             except Exception as e:
-                logging.warning(f"Approval callback failed for {request.request_id}: {e}")
+                logging.warning(f"Approval callback failed for {request.id}: {e}")
 
     def get_pending(self, approver: Optional[str] = None) -> list[ApprovalRequest]:
         """Get pending approval requests."""

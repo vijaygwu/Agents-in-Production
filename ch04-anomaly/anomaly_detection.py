@@ -13,9 +13,10 @@ Based on observability best practices for production AI systems.
 """
 
 import asyncio
-import time
+import logging
 import math
 import statistics
+import time
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from enum import Enum

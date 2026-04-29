@@ -4,13 +4,13 @@ Common types used across Book 2 code examples.
 
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
+from enum import Enum
+from typing import Any, Dict, List, Optional
 
 
 def _utc_now() -> datetime:
     """Return current UTC time (timezone-aware)."""
     return datetime.now(timezone.utc)
-from enum import Enum
-from typing import Any, Dict, List, Optional
 
 
 class PolicyAction(Enum):

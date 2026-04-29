@@ -13,9 +13,10 @@ Based on microservices service discovery patterns adapted for AI agents.
 """
 
 import asyncio
-import time
 import hashlib
 import json
+import logging
+import time
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Optional, Callable

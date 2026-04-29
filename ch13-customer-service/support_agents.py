@@ -14,12 +14,13 @@ Handles customer inquiries from intake through resolution.
 """
 
 import asyncio
+import logging
 import time
 import uuid
+from collections import defaultdict
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Optional, Callable
-from collections import defaultdict
+from typing import Any, Callable, Optional
 
 
 # =============================================================================
