@@ -702,7 +702,32 @@ async def main():
     @instrumentation.trace_tool_call("calculator")
     async def calculator_tool(expression: str) -> float:
         await asyncio.sleep(0.01)
-        return eval(expression)  # Demo only
+        # Safe arithmetic evaluation - only allows numbers and basic operators
+        import ast
+        import operator
+
+        # Allowed operators for safe math evaluation
+        ops = {
+            ast.Add: operator.add,
+            ast.Sub: operator.sub,
+            ast.Mult: operator.mul,
+            ast.Div: operator.truediv,
+            ast.Pow: operator.pow,
+            ast.USub: operator.neg,
+        }
+
+        def safe_eval(node):
+            if isinstance(node, ast.Constant):
+                return node.value
+            elif isinstance(node, ast.BinOp):
+                return ops[type(node.op)](safe_eval(node.left), safe_eval(node.right))
+            elif isinstance(node, ast.UnaryOp):
+                return ops[type(node.op)](safe_eval(node.operand))
+            else:
+                raise ValueError(f"Unsupported operation: {type(node)}")
+
+        tree = ast.parse(expression, mode='eval')
+        return float(safe_eval(tree.body))
 
     # Run agent workflow
     print("\n" + "-" * 40)

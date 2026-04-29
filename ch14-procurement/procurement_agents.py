@@ -13,6 +13,7 @@ This system handles purchase requests from intake through approval.
 """
 
 import asyncio
+import logging
 import time
 import uuid
 from dataclasses import dataclass, field
@@ -478,8 +479,8 @@ class ProcurementOrchestrator:
                     await handler(data)
                 else:
                     handler(data)
-            except Exception:
-                pass
+            except Exception as e:
+                logging.warning(f"Event handler for '{event}' failed: {e}")
 
     async def submit_request(self, request: PurchaseRequest) -> dict:
         """Submit a new purchase request."""

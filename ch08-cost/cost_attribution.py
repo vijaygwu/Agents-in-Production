@@ -332,8 +332,8 @@ class CostTracker:
                     await callback(alert)
                 else:
                     callback(alert)
-            except Exception:
-                pass
+            except Exception as e:
+                logging.warning(f"Budget alert callback failed: {e}")
 
     def on_budget_alert(self, callback: Callable):
         """Register callback for budget alerts."""

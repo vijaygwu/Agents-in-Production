@@ -326,8 +326,8 @@ class ApprovalWorkflow:
                     await callback(request)
                 else:
                     callback(request)
-            except Exception:
-                pass
+            except Exception as e:
+                logging.warning(f"Approval callback failed for {request.request_id}: {e}")
 
     def get_pending(self, approver: Optional[str] = None) -> list[ApprovalRequest]:
         """Get pending approval requests."""
@@ -435,8 +435,8 @@ class FeedbackCollector:
                     await callback(feedback)
                 else:
                     callback(feedback)
-            except Exception:
-                pass
+            except Exception as e:
+                logging.warning(f"Feedback callback failed: {e}")
 
     def on_feedback(self, callback: Callable):
         """Register callback for new feedback."""

@@ -471,8 +471,8 @@ class EscalationAgent(SupportAgent):
                     await callback(ticket, reason)
                 else:
                     callback(ticket, reason)
-            except Exception:
-                pass
+            except Exception as e:
+                logging.warning(f"Escalation callback failed: {e}")
 
         # Send acknowledgment to customer
         ack_message = (
@@ -529,8 +529,8 @@ class CustomerSupportOrchestrator:
                     await handler(data)
                 else:
                     handler(data)
-            except Exception:
-                pass
+            except Exception as e:
+                logging.warning(f"Event handler for '{event}' failed: {e}")
 
     async def create_ticket(self, customer: Customer, subject: str,
                              initial_message: str) -> SupportTicket:

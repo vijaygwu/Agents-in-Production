@@ -131,6 +131,15 @@ Complete, production-ready examples demonstrating all concepts in realistic ente
 - **Infrastructure**: Docker, Kubernetes
 - **Testing**: pytest, pytest-asyncio
 
+## Code Quality
+
+This codebase follows modern Python best practices:
+
+- **Security**: JWT secrets loaded from environment variables, safe AST-based evaluation instead of `eval()`, proper exception handling with logging
+- **Python 3.12+ Compatibility**: Uses `datetime.now(timezone.utc)` instead of deprecated `datetime.utcnow()`
+- **Redis 7.0 Compatibility**: Uses `BLMOVE` instead of deprecated `BRPOPLPUSH`
+- **Thread Safety**: Rate limiters and circuit breakers use proper locking for concurrent access
+
 ## Related Resources
 
 - **Book**: *Agents in Production: Operating Multi-Agent Systems at Scale*

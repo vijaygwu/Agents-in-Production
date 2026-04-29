@@ -3,7 +3,12 @@ Common types used across Book 2 code examples.
 """
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
+
+
+def _utc_now() -> datetime:
+    """Return current UTC time (timezone-aware)."""
+    return datetime.now(timezone.utc)
 from enum import Enum
 from typing import Any, Dict, List, Optional
 
@@ -42,7 +47,7 @@ class AgentIdentity:
     roles: List[str]
     permissions: List[str]
     certificate_fingerprint: Optional[str] = None
-    created_at: datetime = field(default_factory=datetime.utcnow)
+    created_at: datetime = field(default_factory=_utc_now)
     expires_at: Optional[datetime] = None
     metadata: Dict[str, Any] = field(default_factory=dict)
 
@@ -55,7 +60,7 @@ class PolicyDecision:
     reason: str
     matched_rules: List[str] = field(default_factory=list)
     conditions: Dict[str, Any] = field(default_factory=dict)
-    timestamp: datetime = field(default_factory=datetime.utcnow)
+    timestamp: datetime = field(default_factory=_utc_now)
 
 
 @dataclass
@@ -92,7 +97,7 @@ class CostRecord:
     output_tokens: int = 0
     model: str = ""
     cost_usd: float = 0.0
-    timestamp: datetime = field(default_factory=datetime.utcnow)
+    timestamp: datetime = field(default_factory=_utc_now)
     metadata: Dict[str, Any] = field(default_factory=dict)
 
 
@@ -107,7 +112,7 @@ class AnomalyAlert:
     metric_name: Optional[str] = None
     observed_value: Optional[float] = None
     expected_range: Optional[tuple] = None
-    timestamp: datetime = field(default_factory=datetime.utcnow)
+    timestamp: datetime = field(default_factory=_utc_now)
 
 
 @dataclass
@@ -120,4 +125,4 @@ class EvaluationResult:
     passed: bool
     metrics: Dict[str, float] = field(default_factory=dict)
     failures: List[Dict[str, Any]] = field(default_factory=list)
-    timestamp: datetime = field(default_factory=datetime.utcnow)
+    timestamp: datetime = field(default_factory=_utc_now)

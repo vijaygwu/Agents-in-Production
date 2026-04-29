@@ -4,8 +4,9 @@ Common utilities used across Book 2 code examples.
 
 import asyncio
 import hashlib
+import time
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from functools import wraps
 from typing import Any, Callable, TypeVar
 
@@ -21,7 +22,7 @@ def generate_id(prefix: str = "") -> str:
 def format_timestamp(dt: datetime = None) -> str:
     """Format a datetime as ISO 8601 string."""
     if dt is None:
-        dt = datetime.utcnow()
+        dt = datetime.now(timezone.utc)
     return dt.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
 
 
@@ -66,12 +67,12 @@ class RateLimiter:
         self.rate = rate
         self.capacity = capacity
         self.tokens = capacity
-        self.last_update = asyncio.get_event_loop().time()
+        self.last_update = time.monotonic()  # Use time.monotonic for elapsed time
         self._lock = asyncio.Lock()
 
     async def acquire(self, tokens: float = 1.0) -> bool:
         async with self._lock:
-            now = asyncio.get_event_loop().time()
+            now = time.monotonic()
             elapsed = now - self.last_update
             self.tokens = min(self.capacity, self.tokens + elapsed * self.rate)
             self.last_update = now
@@ -98,7 +99,7 @@ class CircuitBreaker:
 
     def record_failure(self):
         self.failures += 1
-        self.last_failure_time = asyncio.get_event_loop().time()
+        self.last_failure_time = time.monotonic()
         if self.failures >= self.failure_threshold:
             self.state = "open"
 
@@ -110,7 +111,7 @@ class CircuitBreaker:
         if self.state == "closed":
             return True
         if self.state == "open":
-            elapsed = asyncio.get_event_loop().time() - self.last_failure_time
+            elapsed = time.monotonic() - self.last_failure_time
             if elapsed >= self.recovery_timeout:
                 self.state = "half-open"
                 return True

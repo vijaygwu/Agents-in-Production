@@ -591,8 +591,8 @@ class AnomalyMonitor:
                     await callback(anomaly)
                 else:
                     callback(anomaly)
-            except Exception:
-                pass
+            except Exception as e:
+                logging.warning(f"Anomaly callback failed for {anomaly.type}: {e}")
 
     async def get_anomalies(self,
                             agent_id: Optional[str] = None,

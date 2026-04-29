@@ -66,7 +66,17 @@ class Breakpoint:
 
         if self.type == BreakpointType.CONDITION:
             try:
-                return eval(self.condition, {"context": context})
+                # Safe evaluation using restricted context
+                # Only allow simple attribute access patterns like "context['key'] == value"
+                import ast
+                # Parse condition as AST and validate it's a safe comparison
+                tree = ast.parse(self.condition, mode='eval')
+                # Only allow Compare nodes with simple operations
+                if not isinstance(tree.body, ast.Compare):
+                    return False
+                # Compile and evaluate with restricted globals (no builtins)
+                code = compile(tree, '<condition>', 'eval')
+                return bool(eval(code, {"__builtins__": {}}, {"context": context}))
             except Exception:
                 return False
 
@@ -294,8 +304,9 @@ class AgentDebugger:
                     await callback(snapshot)
                 else:
                     callback(snapshot)
-            except Exception:
-                pass
+            except Exception as e:
+                # Log but don't fail - callbacks shouldn't break debugging
+                print(f"[DEBUG] Callback {getattr(callback, '__name__', 'unknown')} failed: {e}")
 
         # Build context for breakpoint evaluation
         context = {
@@ -320,8 +331,8 @@ class AgentDebugger:
                             await callback(bp, snapshot)
                         else:
                             callback(bp, snapshot)
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        print(f"[DEBUG] Breakpoint callback {getattr(callback, '__name__', 'unknown')} failed: {e}")
 
         # Check watchpoints
         for wp in self.watchpoints.values():

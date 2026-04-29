@@ -450,8 +450,8 @@ class AgentRegistry:
                         await callback(agent_id, old_status, status)
                     else:
                         callback(agent_id, old_status, status)
-                except Exception:
-                    pass
+                except Exception as e:
+                    logging.warning(f"Health change callback failed: {e}")
 
     async def _default_health_check(self, registration: AgentRegistration) -> bool:
         """Default health check - verify heartbeat recency."""
