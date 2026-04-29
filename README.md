@@ -20,18 +20,18 @@ This repository contains the complete Python implementations for all code exampl
 
 ```
 .
-├── ch01-identity/           # Identity service with JWT and certificate auth
-├── ch02-gateway/            # API gateway with rate limiting and routing
-├── ch03-registry/           # Agent registry and discovery service
-├── ch04-anomaly/            # Anomaly detection for agent behavior
-├── ch05-evaluation/         # Evaluation framework for agent performance
-├── ch06-observability/      # Observability with metrics and tracing
-├── ch07-debugging/          # Debugging tools and log analysis
-├── ch08-cost/               # Cost attribution and budget management
-├── ch09-infrastructure/     # Infrastructure scaling and state management
-├── ch10-human-agent/        # Human-agent collaboration patterns
-├── ch13-procurement/        # Enterprise procurement system example
-├── ch14-support/            # Customer support platform example
+├── ch01-identity/           # Enterprise identity and authentication
+├── ch02-gateway/            # API keys and secrets management
+├── ch03-registry/           # Rate limiting and cost control
+├── ch04-anomaly/            # Audit logging and compliance
+├── ch05-evaluation/         # Agent deployment strategies
+├── ch06-observability/      # Monitoring and observability
+├── ch07-debugging/          # Error handling and recovery
+├── ch08-cost/               # Testing agent systems
+├── ch09-infrastructure/     # Scaling agent systems
+├── ch10-human-agent/        # State management
+├── ch13-procurement/        # Case study: Enterprise procurement
+├── ch14-support/            # Case study: Customer service platform
 ├── common/                  # Shared utilities and type definitions
 └── requirements.txt         # Python dependencies
 ```
@@ -41,17 +41,17 @@ This repository contains the complete Python implementations for all code exampl
 | Chapter | Topic | Key Implementations |
 |---------|-------|---------------------|
 | 1 | Enterprise Identity | JWT auth, certificate management, OIDC integration |
-| 2 | API Gateway | Rate limiting, request routing, load balancing |
-| 3 | Agent Registry | Service discovery, health checks, capability matching |
-| 4 | Anomaly Detection | Behavioral analysis, drift detection, alerting |
-| 5 | Evaluation | Performance metrics, A/B testing, quality assessment |
+| 2 | API Keys & Secrets | Secrets management, credential rotation, vault integration |
+| 3 | Rate Limiting | Token buckets, cost controls, quota management |
+| 4 | Audit Logging | Compliance logging, tamper-evident trails, retention |
+| 5 | Deployment | Blue-green deployments, canary releases, rollbacks |
 | 6 | Observability | OpenTelemetry tracing, Prometheus metrics, dashboards |
-| 7 | Debugging | Log aggregation, trace analysis, root cause identification |
-| 8 | Cost Attribution | Token tracking, budget allocation, cost optimization |
-| 9 | Infrastructure | Auto-scaling, state management, queue-based architecture |
-| 10 | Human-Agent Collaboration | Handoff protocols, escalation, feedback loops |
-| 13 | Procurement System | Complete enterprise procurement example |
-| 14 | Support Platform | Complete customer service example |
+| 7 | Error Handling | Circuit breakers, retry policies, graceful degradation |
+| 8 | Testing | Unit tests, integration tests, agent evaluation |
+| 9 | Scaling | Auto-scaling, queue-based architecture, load balancing |
+| 10 | State Management | Checkpointing, distributed state, recovery |
+| 13 | Customer Service | Complete enterprise customer support platform |
+| 14 | Procurement | Complete enterprise procurement system |
 
 ## Getting Started
 
@@ -111,16 +111,16 @@ python ch14-support/support_agents.py
 
 ## Key Topics
 
-### Governance (Chapters 1-4)
-Enterprise-grade identity, authentication, rate limiting, and behavioral monitoring for agent systems.
+### Part I: Governance (Chapters 1-4)
+Enterprise-grade identity, authentication, secrets management, rate limiting, and audit logging for agent systems.
 
-### Operations (Chapters 5-8)
-Evaluation frameworks, observability pipelines, debugging tools, and cost management.
+### Part II: Operations (Chapters 5-8)
+Deployment strategies, monitoring and observability, error handling, and testing frameworks.
 
-### Infrastructure (Chapters 9-10)
-Scaling patterns, state management, and human-agent collaboration protocols.
+### Part III: Infrastructure (Chapters 9-10)
+Scaling patterns, state management, and distributed systems considerations.
 
-### Case Studies (Chapters 13-14)
+### Part IV: Case Studies (Chapters 13-14)
 Complete, production-ready examples demonstrating all concepts in realistic enterprise scenarios.
 
 ## Technology Stack
